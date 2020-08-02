@@ -1,0 +1,11 @@
+<!-- Image Browser -->
+<template>
+    <lightning-input label='Search Photos' onchange={filterPhotos}></lightning-input>
+    <template if:true={showAlbums}>
+        <c-album-list albums={albums} onselectedalbum={handleAlbumSelect}></c-album-list>
+    </template>
+    <template if:true={showPhotos}>
+        <lightning-button label='Back' onclick={backToAlbums}></lightning-button>
+        <c-photo-list photos={photos}></c-photo-list>
+    </template>
+</template>

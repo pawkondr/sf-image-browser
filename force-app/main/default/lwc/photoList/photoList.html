@@ -1,0 +1,17 @@
+<!-- Photo List -->
+<template>
+    <article class="slds-card">
+        <div class="slds-card__body slds-card__body_inner">
+            <ul class="slds-grid slds-wrap slds-grid_pull-padded">
+                <template for:each={photos} for:item='photo'>
+                <li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-3 slds-grid_align-center" key={photo.Id}>
+                    <article class="slds-tile slds-media slds-card__tile slds-hint-parent slds-grid_align-center">
+                        <img src={photo.Thumbnail_URL__c} />
+                    </article>
+                    {photo.Title__c}
+                </li>
+                </template>
+            </ul>
+        </div>
+    </article>
+</template>

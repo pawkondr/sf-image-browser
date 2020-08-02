@@ -1,0 +1,12 @@
+<!-- Album List -->
+<template>
+    <lightning-card title="Select Album">
+        <ul class="slds-has-dividers_bottom slds-has-block-links_space" >
+            <template for:each={albums} for:item='album'>
+                <li class="slds-item" key={album.Id} >
+                    <a data-sfid={album.Id} onclick={handleClick}>{album.Name}</a>
+                </li>
+            </template>
+        </ul>
+    </lightning-card>
+</template>
