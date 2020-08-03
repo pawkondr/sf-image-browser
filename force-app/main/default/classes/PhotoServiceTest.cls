@@ -5,8 +5,10 @@ public with sharing class PhotoServiceTest {
     private static void shouldCallApiGetJsonAndInsertObjects(){
 
         Test.setMock(HttpCalloutMock.class, new PhotoHttpCalloutMock());
+        Test.startTest();
 
         PhotoService.getPhotosFromApi();
+        Test.stopTest();
 
         List<Album__c> albums = new Query(Album__c.SObjectType).run();
         List<Photo__c> photos = new Query(Photo__c.SObjectType).run();

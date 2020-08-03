@@ -1,11 +1,20 @@
 <!-- Image Browser -->
 <template>
-    <lightning-input label='Search Photos' onchange={filterPhotos}></lightning-input>
-    <template if:true={showAlbums}>
-        <c-album-list albums={albums} onselectedalbum={handleAlbumSelect}></c-album-list>
-    </template>
-    <template if:true={showPhotos}>
-        <lightning-button label='Back' onclick={backToAlbums}></lightning-button>
-        <c-photo-list photos={photos}></c-photo-list>
-    </template>
+    <c-custom-toast toast-visible={toastVisible} toast-variant={toastVariant} message={message}></c-custom-toast>
+    <lightning-spinner if:true={loading} alternative-text="Loading" size="medium"></lightning-spinner>
+    <div class="slds-card main-container">
+        <lightning-input label='Search Photos' onchange={filterPhotos}></lightning-input>
+        <br/>
+        <template if:true={showAlbums}>
+            <c-album-list albums={albums} onselectedalbum={handleAlbumSelect}></c-album-list>
+        </template>
+        <template if:true={showPhotos}>
+            <div class='slds-button_full-width'>
+                <lightning-button label='Back' class="nav-button" onclick={backToAlbums} ></lightning-button>
+                <lightning-input label='Enter email address' type='email' name="emailAddress" class='email-input' onchange={inputOnChange} ></lightning-input>
+                <lightning-button label='Send photos' class="nav-button" variant="brand" onclick={sendEmail}></lightning-button>
+            </div>
+            <c-photo-list photos={photos}></c-photo-list>
+        </template>
+    </div>
 </template>
